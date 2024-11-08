@@ -1,4 +1,4 @@
-package com.ohgiraffers.section01.scope.subsection01.singleton;
+package com.ohgiraffers.section02.initdestroy.subsection01.java;
 
 import com.ohgiraffers.common.Cart;
 import com.ohgiraffers.common.Drink;
@@ -29,8 +29,14 @@ public class ContextConfig {
     }
 
     @Bean
+    @Scope("prototype")
     // 상품을 담기 위한 카트 객체 생성
     public Cart cart() {
         return new Cart();
+    }
+
+    @Bean(initMethod = "openShop", destroyMethod = "closeShop")
+    public Owner owner() {
+        return new Owner();
     }
 }

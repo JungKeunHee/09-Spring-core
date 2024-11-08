@@ -1,4 +1,4 @@
-package com.ohgiraffers.section01.scope.subsection01.singleton;
+package com.ohgiraffers.section01.scope.subsection02.prototype;
 
 import com.ohgiraffers.common.Cart;
 import com.ohgiraffers.common.Drink;
@@ -33,7 +33,7 @@ public class Application {
         Cart cart2 = context.getBean("cart", Cart.class);
         cart2.addItem(coke);
 
-        System.out.println("두 번째 손님 카트 목록 : " + cart1.showCart());
+        System.out.println("두 번째 손님 카트 목록 : " + cart2.showCart());
 
         System.out.println(cart1.hashCode());
         System.out.println(cart2.hashCode());
