@@ -8,7 +8,10 @@ import org.springframework.util.StopWatch;
 
 import java.util.Map;
 
-/* @Aspect 어노테이션 : AOP 기능을 사용하기 위한 어노테이션 */
+/* @Aspect 어노테이션 : AOP 기능을 사용하기 위한 어노테이션
+*   - PointCut 과 Advice 를 하나의 클래스 단위로 정의하기 위한
+*   - 어노테이션
+* */
 @Aspect
 @Component
 public class LoggingAspect {
@@ -66,19 +69,19 @@ public class LoggingAspect {
     *   - 메소드가 동작을 완료하고 자신을 호출한 쪽으로 가져가는 값
     *   - 즉 리턴값을 담아둘 변수명을 기술한다
     *  */
-    @AfterReturning(pointcut = "logPointCut()", returning = "result")
-    public void logAfterReturning(JoinPoint joinPoint, Object result) {
-        System.out.println("result 변수에 Service 에서 return 되는 값이 담겼나? " + result);
-        /* comment.
-        *   result 변수에 우리가 Service 클래스에서 return 되는 값이
-        *   담긴 것을 확인했다. 그렇다는 것은 우리가 result 변수에
-        *   접근해서 값을 조작할 수 있다는 의미로 해석할 수 있다.
-        *  */
-
-        if (result != null && result instanceof Map){
-            ((Map<Long, MemberDTO>) result).put(100L, new MemberDTO(100L, "반환되는 값 가공 성공!!!"));
-        }
-    }
+//    @AfterReturning(pointcut = "logPointCut()", returning = "result")
+//    public void logAfterReturning(JoinPoint joinPoint, Object result) {
+//        System.out.println("result 변수에 Service 에서 return 되는 값이 담겼나? " + result);
+//        /* comment.
+//        *   result 변수에 우리가 Service 클래스에서 return 되는 값이
+//        *   담긴 것을 확인했다. 그렇다는 것은 우리가 result 변수에
+//        *   접근해서 값을 조작할 수 있다는 의미로 해석할 수 있다.
+//        *  */
+//
+//        if (result != null && result instanceof Map){
+//            ((Map<Long, MemberDTO>) result).put(100L, new MemberDTO(100L, "반환되는 값 가공 성공!!!"));
+//        }
+//    }
 
     /* comment.
     *   @AfterThrowing
